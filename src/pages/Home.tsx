@@ -112,15 +112,17 @@ const Home: React.FC = () => {
       {/* Hero Section */}
       <section className="relative text-white">
         <HeroBackgroundSlider />
+        {/* Dark overlay to improve text readability over images */}
+        <div className="absolute inset-0 bg-black/50 z-[1]" />
         <div className="relative z-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-            <h1 className="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight mb-6">
+            <h1 className="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight mb-6 drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]">
               Strategic IT Solutions for
-              <span className="block bg-clip-text text-transparent bg-gradient-to-r from-primary-200 via-primary-400 to-primary-600">
+              <span className="block text-white md:bg-clip-text md:text-transparent md:bg-gradient-to-r from-primary-200 via-primary-400 to-primary-600">
                 Modern Businesses
               </span>
             </h1>
-            <p className="text-xl md:text-2xl text-white/85 leading-relaxed mb-8 max-w-4xl mx-auto">
+            <p className="text-xl md:text-2xl text-white/90 leading-relaxed mb-8 max-w-4xl mx-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
               At Recuitbot, we believe that a strategic staffing plan is essential for driving your organization's vision and objectives forward. Our approach ensures optimal utilization of human resources by aligning the right talent with the right opportunities, precisely when needed.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
