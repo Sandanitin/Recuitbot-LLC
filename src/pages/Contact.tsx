@@ -1,15 +1,35 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import { useForm } from 'react-hook-form';
 import { 
   MapPinIcon, 
   PhoneIcon, 
   EnvelopeIcon,
   ClockIcon,
-  CheckCircleIcon
 } from '@heroicons/react/24/outline';
+ 
 
 const Contact: React.FC = () => {
-  const mailTo = `mailto:team@recuitbot.com?subject=${encodeURIComponent('Inquiry from Recuitbot website')}&body=${encodeURIComponent('Hi Recuitbot Team,%0D%0A%0D%0AMy name is ...%0D%0ACompany (optional): ...%0D%0APhone (optional): ...%0D%0A%0D%0AHere are the details of my request: ...%0D%0A%0D%0AThank you!')}`;
+  type ContactFormInputs = {
+    name: string;
+    email: string;
+    phone?: string;
+    company?: string;
+    subject: string;
+    message: string;
+  };
+
+  const { register, handleSubmit, formState: { errors } } = useForm<ContactFormInputs>();
+
+  const onSubmit = (data: ContactFormInputs) => {
+    const to = 'team@recuitbot.com';
+    const subject = encodeURIComponent(`[Website] ${data.subject}`);
+    const body = encodeURIComponent(
+      `Name: ${data.name}\nEmail: ${data.email}\nPhone: ${data.phone || ''}\nCompany: ${data.company || ''}\n\nMessage:\n${data.message}`
+    );
+    const mailtoUrl = `mailto:${to}?subject=${subject}&body=${body}`;
+    window.location.href = mailtoUrl;
+  };
 
   const contactInfo = [
     {
@@ -34,7 +54,7 @@ const Contact: React.FC = () => {
     }
   ];
 
-  // No backend form submission; users will contact via direct email
+  // Thank-you screen removed; email client will handle sending
 
   return (
     <>
@@ -65,23 +85,126 @@ const Contact: React.FC = () => {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact via Email */}
+            {/* Contact Form */}
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-6">
                 Send us a Message
               </h2>
-              <p className="text-lg text-gray-600 mb-6">
-                Prefer email? Click below to open your mail app. We typically respond within 24 hours.
+              <p className="text-lg text-gray-600 mb-8">
+                Fill out the form below and we'll get back to you within 24 hours.
               </p>
-              <a
-                href={mailTo}
-                className="inline-flex items-center justify-center w-full bg-primary-600 text-white py-3 px-6 rounded-md font-semibold hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-colors duration-200"
-              >
-                Email team@recuitbot.com
-              </a>
-              <p className="text-sm text-gray-500 mt-3">
-                Or email us directly at <a href="mailto:team@recuitbot.com" className="text-primary-700 hover:text-primary-800">team@recuitbot.com</a>
-              </p>
+
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                      Full Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      {...register('name', { 
+                        required: 'Name is required',
+                        minLength: { value: 2, message: 'Name must be at least 2 characters' }
+                      })}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
+                    />
+                    {errors.name && (
+                      <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>
+                    )}
+                  </div>
+
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                      Email Address *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      {...register('email', { 
+                        required: 'Email is required',
+                        pattern: {
+                          value: /^\S+@\S+$/i,
+                          message: 'Invalid email address'
+                        }
+                      })}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
+                    />
+                    {errors.email && (
+                      <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
+                    )}
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                      Phone Number
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      {...register('phone')}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
+                      Company
+                    </label>
+                    <input
+                      type="text"
+                      id="company"
+                      {...register('company')}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
+                    Subject *
+                  </label>
+                  <input
+                    type="text"
+                    id="subject"
+                    {...register('subject', { 
+                      required: 'Subject is required',
+                      minLength: { value: 5, message: 'Subject must be at least 5 characters' }
+                    })}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
+                  />
+                  {errors.subject && (
+                    <p className="mt-1 text-sm text-red-600">{errors.subject.message}</p>
+                  )}
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                    Message *
+                  </label>
+                  <textarea
+                    id="message"
+                    rows={6}
+                    {...register('message', { 
+                      required: 'Message is required',
+                      minLength: { value: 10, message: 'Message must be at least 10 characters' }
+                    })}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
+                  />
+                  {errors.message && (
+                    <p className="mt-1 text-sm text-red-600">{errors.message.message}</p>
+                  )}
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full bg-primary-600 text-white py-3 px-6 rounded-md font-semibold hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
+                >
+                  Send Message
+                </button>
+              </form>
             </div>
 
             {/* Contact Information */}

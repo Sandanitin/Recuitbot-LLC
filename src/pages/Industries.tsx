@@ -22,26 +22,26 @@ const Industries: React.FC = () => {
     {
       name: 'Information Technology',
       icon: BuildingOfficeIcon,
-      description: 'Recuitbot specializes in powering IT organizations with skilled talent and cutting-edge development solutions. From infrastructure support to custom software and app development, we help tech-driven companies accelerate innovation, enhance agility, and stay ahead in an ever-evolving digital landscape.',
-      services: ['Software Development', 'Cloud Migration', 'DevOps Implementation', 'AI/ML Solutions'],
+      description: 'Recuitbot powers IT organizations with skilled talent and modern development solutions. From infrastructure support to custom software and application development, we help technology driven companies accelerate innovation, enhance agility, and stay ahead in a constantly evolving digital landscape.',
+      services: ['Software Development', 'Cloud Migration', 'DevOps Implementation', 'AI and ML Solutions'],
       color: 'bg-blue-100 text-blue-600'
     },
     {
       name: 'Finance & Insurance',
       icon: CurrencyDollarIcon,
-      description: 'We support financial and insurance institutions with secure, compliant, and scalable staffing and IT solutions. Recuitbot helps streamline operations, modernize legacy systems, and ensure regulatory adherence while connecting firms with finance-savvy tech talent to drive digital transformation.',
+      description: 'We support financial and insurance institutions with secure, compliant, and scalable staffing and IT solutions. Recuitbot helps streamline operations, modernize legacy systems, and ensure regulatory adherence while connecting firms with finance savvy tech talent to drive digital transformation.',
       services: ['Fintech Development', 'Compliance Solutions', 'Risk Management', 'Digital Banking'],
       color: 'bg-blue-100 text-blue-600'
     },
     {
       name: 'Retail',
       icon: ShoppingBagIcon,
-      description: 'In the fast-paced retail sector, Recuitbot empowers businesses with eCommerce-ready technology, customer-centric applications, and marketing solutions that elevate the shopping experience. From POS integration to supply chain analytics, we help retailers optimize performance and meet changing consumer demands.',
-      services: ['E-commerce Development', 'Inventory Management', 'Customer Analytics', 'Mobile Commerce'],
+      description: 'In the fast paced retail sector, Recuitbot empowers businesses with ecommerce ready technology, customer centric applications, and marketing solutions that elevate the shopping experience. From POS integration to supply chain analytics, we help retailers optimize performance and meet changing consumer demands.',
+      services: ['Ecommerce Development', 'Inventory Management', 'Customer Analytics', 'Mobile Commerce'],
       color: 'bg-purple-100 text-purple-600'
     },
     {
-      name: 'Telecommunication',
+      name: 'Telecommunications',
       icon: PhoneIcon,
       description: 'Recuitbot provides telecom companies with specialized IT staffing, network solutions, and digital innovation to enhance connectivity and performance. Whether it\'s 5G deployment, customer management platforms, or cybersecurity, we ensure seamless operations and scalable support.',
       services: ['Network Design', '5G Implementation', 'IoT Solutions', 'Telecom Software'],
@@ -71,7 +71,7 @@ const Industries: React.FC = () => {
     {
       name: 'Healthcare',
       icon: HeartIcon,
-      description: 'Recuitbot delivers secure, reliable, and HIPAA-compliant IT and staffing services to healthcare organizations. From EHR integration and telehealth platforms to specialized healthcare IT professionals, we enable providers to enhance patient care through efficient, data-driven systems.',
+      description: 'Recuitbot delivers secure, reliable, and HIPAA compliant IT and staffing services to healthcare organizations. From EHR integration and telehealth platforms to specialized healthcare IT professionals, we enable providers to enhance patient care through efficient, data driven systems.',
       services: ['Electronic Health Records', 'Telemedicine Platforms', 'Health Analytics', 'Patient Portals'],
       color: 'bg-pink-100 text-pink-600'
     },

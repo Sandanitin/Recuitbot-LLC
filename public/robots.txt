@@ -5,5 +5,4 @@ Allow: /
 Disallow: /dist/
 
 Sitemap: https://recuitbot.com/sitemap.xml
-
-
+  
