@@ -132,6 +132,46 @@ const Home: React.FC = () => {
                 Explore Our Services
               </Link>
             </div>
+
+            {/* Hero Highlight Images */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+              <div className="relative group overflow-hidden rounded-2xl shadow-lg ring-1 ring-white/10">
+                <img
+                  src="https://images.unsplash.com/photo-1523246206026-7b2a54d09459?q=80&w=1920&auto=format&fit=crop"
+                  alt="IT Staffing"
+                  loading="lazy"
+                  className="h-56 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+                <div className="absolute bottom-4 left-4">
+                  <span className="inline-block bg-white/90 text-primary-700 text-sm font-semibold px-3 py-1 rounded-full">IT Staffing</span>
+                </div>
+              </div>
+              <div className="relative group overflow-hidden rounded-2xl shadow-lg ring-1 ring-white/10">
+                <img
+                  src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1920&auto=format&fit=crop"
+                  alt="IT Development"
+                  loading="lazy"
+                  className="h-56 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+                <div className="absolute bottom-4 left-4">
+                  <span className="inline-block bg-white/90 text-primary-700 text-sm font-semibold px-3 py-1 rounded-full">IT Development</span>
+                </div>
+              </div>
+              <div className="relative group overflow-hidden rounded-2xl shadow-lg ring-1 ring-white/10">
+                <img
+                  src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1920&auto=format&fit=crop"
+                  alt="Digital Marketing"
+                  loading="lazy"
+                  className="h-56 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+                <div className="absolute bottom-4 left-4">
+                  <span className="inline-block bg-white/90 text-primary-700 text-sm font-semibold px-3 py-1 rounded-full">Digital Marketing</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
