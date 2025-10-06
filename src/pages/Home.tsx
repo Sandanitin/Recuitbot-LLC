@@ -14,7 +14,7 @@ import {
 const HeroBackgroundSlider: React.FC = () => {
   const images = [
     { src: '/images/staff.jpeg', alt: 'IT Staffing' },
-    { src: '/images/IMG_7671.PNG', alt: 'IT Development' },
+    { src: '/images/development.jpg', alt: 'IT Development' },
     { src: '/images/digital.jpg', alt: 'Digital Marketing' }
   ];
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -33,8 +33,14 @@ const HeroBackgroundSlider: React.FC = () => {
           key={image.src}
           src={image.src}
           alt={image.alt}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${index === currentIndex ? 'opacity-100' : 'opacity-0'}`}
-          loading="lazy"
+          className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000 ${index === currentIndex ? 'opacity-100' : 'opacity-0'}`}
+          loading={index === 0 ? 'eager' : 'lazy'}
+          decoding="async"
+          sizes="100vw"
+          // will-change hint to help with smoother opacity transitions
+          style={{ willChange: 'opacity' }}
+          // fetchpriority helps the first hero image load sharper/faster
+          {...(index === 0 ? { fetchpriority: 'high' as any } : {})}
         />
       ))}
       
