@@ -14,8 +14,8 @@ import {
 const HeroBackgroundSlider: React.FC = () => {
   const images = [
     { src: '/images/staff.jpeg', alt: 'IT Staffing' },
-    { src: '/images/development.jpg', alt: 'IT Development' },
-    { src: '/images/digital.jpg', alt: 'Digital Marketing' }
+    { src: '/images/development1.jpeg', alt: 'IT Development' },
+    { src: '/images/digital1.jpg', alt: 'Digital Marketing' }
   ];
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -27,13 +27,13 @@ const HeroBackgroundSlider: React.FC = () => {
   }, [images.length]);
 
   return (
-    <div className="absolute inset-0 z-0 bg-black">
+    <div className="absolute inset-0 z-0">
       {images.map((image, index) => (
         <img
           key={image.src}
           src={image.src}
           alt={image.alt}
-          className={`absolute inset-0 w-full h-full object-contain object-center transition-opacity duration-1000 ${index === currentIndex ? 'opacity-100' : 'opacity-0'}`}
+          className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000 ${index === currentIndex ? 'opacity-100' : 'opacity-0'}`}
           loading={index === 0 ? 'eager' : 'lazy'}
           decoding="async"
           sizes="100vw"
