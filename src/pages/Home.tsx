@@ -13,9 +13,9 @@ import {
 
 const HeroBackgroundSlider: React.FC = () => {
   const images = [
-    'https://picsum.photos/id/1011/1920/1080',
-    'https://picsum.photos/id/1015/1920/1080',
-    'https://picsum.photos/id/1005/1920/1080'
+    { src: '/images/staff.jpeg', alt: 'IT Staffing' },
+    { src: '/images/IMG_7671.PNG', alt: 'IT Development' },
+    { src: '/images/digital.jpg', alt: 'Digital Marketing' }
   ];
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -28,11 +28,11 @@ const HeroBackgroundSlider: React.FC = () => {
 
   return (
     <div className="absolute inset-0 z-0">
-      {images.map((src, index) => (
+      {images.map((image, index) => (
         <img
-          key={src}
-          src={src}
-          alt=""
+          key={image.src}
+          src={image.src}
+          alt={image.alt}
           className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${index === currentIndex ? 'opacity-100' : 'opacity-0'}`}
           loading="lazy"
         />
@@ -131,34 +131,6 @@ const Home: React.FC = () => {
               >
                 Explore Our Services
               </Link>
-            </div>
-
-            {/* Hero Highlight Images */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-              <div className="relative group overflow-hidden rounded-2xl shadow-lg ring-1 ring-white/10">
-                <img
-                  src="https://images.unsplash.com/photo-1523246206026-7b2a54d09459?q=80&w=1920&auto=format&fit=crop"
-                  alt="IT Staffing"
-                  loading="lazy"
-                  className="h-56 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-                <div className="absolute bottom-4 left-4">
-                  <span className="inline-block bg-white/90 text-primary-700 text-sm font-semibold px-3 py-1 rounded-full">IT Staffing</span>
-                </div>
-              </div>
-              <div className="relative group overflow-hidden rounded-2xl shadow-lg ring-1 ring-white/10">
-                <img
-                  src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1920&auto=format&fit=crop"
-                  alt="IT Development"
-                  loading="lazy"
-                  className="h-56 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-                <div className="absolute bottom-4 left-4">
-                  <span className="inline-block bg-white/90 text-primary-700 text-sm font-semibold px-3 py-1 rounded-full">IT Development</span>
-                </div>
-              </div>
             </div>
           </div>
         </div>
