@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { useForm } from 'react-hook-form';
-import toast from 'react-hot-toast';
 import { 
   MapPinIcon, 
   PhoneIcon, 
@@ -9,38 +7,9 @@ import {
   ClockIcon,
   CheckCircleIcon
 } from '@heroicons/react/24/outline';
-import { api } from '../utils/api';
-import { CreateContactMessageRequest } from '../../shared/types';
 
 const Contact: React.FC = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset
-  } = useForm<CreateContactMessageRequest>();
-
-  const onSubmit = async (data: CreateContactMessageRequest) => {
-    setIsSubmitting(true);
-    try {
-      const response = await api.post('/contact', data);
-      if (response.data.success) {
-        toast.success('Message sent successfully! We\'ll get back to you soon.');
-        setIsSubmitted(true);
-        reset();
-      } else {
-        toast.error('Failed to send message. Please try again.');
-      }
-    } catch (error: any) {
-      console.error('Contact form error:', error);
-      toast.error(error.response?.data?.message || 'Failed to send message. Please try again.');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  const mailTo = `mailto:team@recuitbot.com?subject=${encodeURIComponent('Inquiry from Recuitbot website')}&body=${encodeURIComponent('Hi Recuitbot Team,%0D%0A%0D%0AMy name is ...%0D%0ACompany (optional): ...%0D%0APhone (optional): ...%0D%0A%0D%0AHere are the details of my request: ...%0D%0A%0D%0AThank you!')}`;
 
   const contactInfo = [
     {
@@ -65,36 +34,7 @@ const Contact: React.FC = () => {
     }
   ];
 
-  if (isSubmitted) {
-    return (
-      <>
-        <Helmet>
-          <title>Message Sent - Thank You | Recuitbot</title>
-          <meta name="description" content="Thank you for contacting Recuitbot. We'll get back to you soon." />
-        </Helmet>
-
-        <section className="bg-gradient-to-r from-primary-600 to-primary-800 text-white py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center">
-              <CheckCircleIcon className="h-16 w-16 text-blue-400 mx-auto mb-6" />
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Thank You!
-              </h1>
-              <p className="text-xl text-primary-100 max-w-3xl mx-auto mb-8">
-                Your message has been sent successfully. We'll review your inquiry and get back to you within 24 hours.
-              </p>
-              <button
-                onClick={() => setIsSubmitted(false)}
-                className="bg-white text-primary-600 px-8 py-3 rounded-lg font-semibold hover:bg-primary-50 transition-colors duration-200"
-              >
-                Send Another Message
-              </button>
-            </div>
-          </div>
-        </section>
-      </>
-    );
-  }
+  // No backend form submission; users will contact via direct email
 
   return (
     <>
@@ -125,133 +65,23 @@ const Contact: React.FC = () => {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
+            {/* Contact via Email */}
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-6">
                 Send us a Message
               </h2>
-              <p className="text-lg text-gray-600 mb-8">
-                Fill out the form below and we'll get back to you within 24 hours.
+              <p className="text-lg text-gray-600 mb-6">
+                Prefer email? Click below to open your mail app. We typically respond within 24 hours.
               </p>
-
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                      Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      {...register('name', { 
-                        required: 'Name is required',
-                        minLength: { value: 2, message: 'Name must be at least 2 characters' }
-                      })}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
-                      placeholder="Your full name"
-                    />
-                    {errors.name && (
-                      <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>
-                    )}
-                  </div>
-
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      {...register('email', { 
-                        required: 'Email is required',
-                        pattern: {
-                          value: /^\S+@\S+$/i,
-                          message: 'Invalid email address'
-                        }
-                      })}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
-                      placeholder="your@email.com"
-                    />
-                    {errors.email && (
-                      <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
-                    )}
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                      Phone Number
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      {...register('phone')}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
-                      placeholder="+1 (555) 123-4567"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
-                      Company
-                    </label>
-                    <input
-                      type="text"
-                      id="company"
-                      {...register('company')}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
-                      placeholder="Your company name"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
-                    Subject *
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    {...register('subject', { 
-                      required: 'Subject is required',
-                      minLength: { value: 5, message: 'Subject must be at least 5 characters' }
-                    })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
-                    placeholder="What can we help you with?"
-                  />
-                  {errors.subject && (
-                    <p className="mt-1 text-sm text-red-600">{errors.subject.message}</p>
-                  )}
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    Message *
-                  </label>
-                  <textarea
-                    id="message"
-                    rows={6}
-                    {...register('message', { 
-                      required: 'Message is required',
-                      minLength: { value: 10, message: 'Message must be at least 10 characters' }
-                    })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
-                    placeholder="Tell us about your project or requirements..."
-                  />
-                  {errors.message && (
-                    <p className="mt-1 text-sm text-red-600">{errors.message.message}</p>
-                  )}
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-primary-600 text-white py-3 px-6 rounded-md font-semibold hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
-                >
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
-                </button>
-              </form>
+              <a
+                href={mailTo}
+                className="inline-flex items-center justify-center w-full bg-primary-600 text-white py-3 px-6 rounded-md font-semibold hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-colors duration-200"
+              >
+                Email team@recuitbot.com
+              </a>
+              <p className="text-sm text-gray-500 mt-3">
+                Or email us directly at <a href="mailto:team@recuitbot.com" className="text-primary-700 hover:text-primary-800">team@recuitbot.com</a>
+              </p>
             </div>
 
             {/* Contact Information */}
