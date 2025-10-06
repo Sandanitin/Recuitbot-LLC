@@ -27,13 +27,13 @@ const HeroBackgroundSlider: React.FC = () => {
   }, [images.length]);
 
   return (
-    <div className="absolute inset-0 z-0">
+    <div className="absolute inset-0 z-0 bg-black">
       {images.map((image, index) => (
         <img
           key={image.src}
           src={image.src}
           alt={image.alt}
-          className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000 ${index === currentIndex ? 'opacity-100' : 'opacity-0'}`}
+          className={`absolute inset-0 w-full h-full object-contain object-center transition-opacity duration-1000 ${index === currentIndex ? 'opacity-100' : 'opacity-0'}`}
           loading={index === 0 ? 'eager' : 'lazy'}
           decoding="async"
           sizes="100vw"
