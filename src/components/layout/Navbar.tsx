@@ -8,9 +8,9 @@ const Navbar: React.FC = () => {
 
   const navigation = [
     { name: 'Home', href: '/' },
+    { name: 'About', href: '/about' },
     { name: 'Our Solutions', href: '/services' },
     { name: 'Industries', href: '/industries' },
-    { name: 'About', href: '/about' },
     { name: 'Contact', href: '/contact' },
   ];
 
