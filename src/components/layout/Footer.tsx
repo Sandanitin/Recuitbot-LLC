@@ -129,7 +129,15 @@ const Footer: React.FC = () => {
             <p className="text-gray-400 text-sm">
               © {currentYear} Recuitbot LLC. All rights reserved.
             </p>
-            
+            <a
+              href="https://www.vikrin.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 md:mt-0 text-gray-400 hover:text-white transition-colors duration-200 text-sm"
+              aria-label="Developed with love by Vikrin (opens in a new tab)"
+            >
+              Developed with <span aria-hidden="true">❤️</span> by Vikrin
+            </a>
           </div>
         </div>
       </div>

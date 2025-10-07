@@ -122,7 +122,7 @@ const Home: React.FC = () => {
                 Modern Businesses
               </span>
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 leading-relaxed mb-8 max-w-4xl mx-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
+            <p className="text-base md:text-lg text-white/90 leading-relaxed mb-8 max-w-4xl mx-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
               At Recuitbot, we believe that a strategic staffing plan is essential for driving your organization's vision and objectives forward. Our approach ensures optimal utilization of human resources by aligning the right talent with the right opportunities, precisely when needed.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
