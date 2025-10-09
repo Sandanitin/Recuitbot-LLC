@@ -81,7 +81,7 @@ const About: React.FC = () => {
               Our mission at Recuitbot LLC is to provide adaptable and high-quality IT and staffing solutions that empower businesses to be more agile, competitive, and efficient. We are dedicated to understanding each client's unique needs and delivering innovative services that enhance operational performance while fostering growth and opportunity for both clients and employees.
             </p>
             <p className="text-lg text-gray-600">
-              Finding the right staffing agency for your company can often feel overwhelming but not when you partner with Recuitbot LLC. We simplify the entire process by offering strategic workforce solutions that provide flexibility, reduce administrative burdens, and connect you with top-tier talent.
+              Finding the right staffing agency for your company can often feel overwhelming but not when you partner with Recuitbot LLC. We simplify the entire process by offering strategic workforce solutions that provide flexibility, reduce administrative burdens, and connect you with top tier talent.
             </p>
             </div>
             <div className="bg-primary-50 rounded-xl p-8">
@@ -170,7 +170,7 @@ const About: React.FC = () => {
               {
                 icon: UserGroupIcon,
                 title: 'IT Staffing',
-                description: 'Connect with top-tier IT professionals through our extensive network and rigorous vetting process.',
+                description: 'Connect with top tier IT professionals through our extensive network and rigorous vetting process.',
                 features: ['Expert Consulting', 'Talent Placement', 'Training Programs']
               },
               {

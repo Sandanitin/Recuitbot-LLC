@@ -32,7 +32,7 @@ const Services: React.FC = () => {
         },
         {
           name: 'Staffing',
-          description: 'We connect you with highly skilled professionals through flexible staffing models contract, contract-to-hire, and permanent placement tailored to your project demands and organizational culture.',
+          description: 'We connect you with highly skilled professionals through flexible staffing models contract, contract to hire, and permanent placement tailored to your project demands and organizational culture.',
           features: [
             'Candidate Sourcing',
             'Technical Screening',
@@ -56,7 +56,7 @@ const Services: React.FC = () => {
     },
     'IT Development': {
       icon: CodeBracketIcon,
-      description: 'Full-spectrum IT development services to help you innovate and accelerate digital transformation. We build scalable, secure, and user-centric solutions that solve real business problems and drive measurable results.',
+      description: 'Full-spectrum IT development services to help you innovate and accelerate digital transformation. We build scalable, secure, and user centric solutions that solve real business problems and drive measurable results.',
       subcategories: [
         {
           name: 'App Development',
@@ -115,7 +115,7 @@ const Services: React.FC = () => {
         },
         {
           name: 'Mobile Applications',
-          description: 'We develop intuitive and robust mobile apps for iOS and Android platforms, engineered to deliver top-notch performance and user satisfaction.',
+          description: 'We develop intuitive and robust mobile apps for iOS and Android platforms, engineered to deliver top notch performance and user satisfaction.',
           features: [
             'Native iOS Apps',
             'Native Android Apps',
@@ -215,7 +215,7 @@ const Services: React.FC = () => {
               Comprehensive Technology Solutions
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Our expertise spans across IT Staffing, IT Development, and Digital Marketing, providing end-to-end solutions for your business needs.
+              Our expertise spans across IT Staffing, IT Development, and Digital Marketing, providing end to end solutions for your business needs.
             </p>
           </div>
 
@@ -310,7 +310,7 @@ const Services: React.FC = () => {
               {
                 step: '04',
                 title: 'Support',
-                description: 'Ongoing support and maintenance to ensure long-term success.'
+                description: 'Ongoing support and maintenance to ensure longterm success.'
               }
             ].map((step, index) => (
               <div key={index} className="text-center">

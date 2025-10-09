@@ -59,7 +59,7 @@ const Home: React.FC = () => {
     {
       icon: CodeBracketIcon,
       title: 'IT Development',
-      description: 'Full-spectrum IT development services to help you innovate and accelerate digital transformation. We build scalable, secure, and user-centric solutions that solve real business problems and drive measurable results.',
+      description: 'Full-spectrum IT development services to help you innovate and accelerate digital transformation. We build scalable, secure, and user centric solutions that solve real business problems and drive measurable results.',
       features: ['App Development', 'Cybersecurity', 'Data Analytics', 'Web & Mobile Design']
     },
     {
