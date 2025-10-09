@@ -43,36 +43,16 @@ const About: React.FC = () => {
     { number: '5+', label: 'Years Experience' }
   ];
 
-  const team = [
-    {
-      name: 'John Smith',
-      role: 'CEO & Founder',
-      description: 'Technology visionary with 15+ years in IT leadership and digital transformation.',
-      image: '/images/team/john-smith.jpg'
-    },
-    {
-      name: 'Sarah Johnson',
-      role: 'CTO',
-      description: 'Expert in software architecture and development with a passion for innovative solutions.',
-      image: '/images/team/sarah-johnson.jpg'
-    },
-    {
-      name: 'Mike Chen',
-      role: 'Head of Marketing',
-      description: 'Digital marketing strategist with proven track record in growth and brand development.',
-      image: '/images/team/mike-chen.jpg'
-    }
-  ];
 
   return (
     <>
       <Helmet>
-        <title>About Us - Our Mission, Vision & Team | Recuitbot</title>
+        <title>About Us - Our Mission & Vision | Recuitbot</title>
         <meta 
           name="description" 
-          content="Learn about Recuitbot's mission to provide exceptional IT staffing, development, and digital marketing solutions. Meet our experienced team." 
+          content="Learn about Recuitbot's mission to provide exceptional IT staffing, development, and digital marketing solutions."
         />
-        <meta name="keywords" content="about recuitbot, company mission, team, IT staffing company, technology solutions" />
+        <meta name="keywords" content="about recuitbot, company mission, IT staffing company, technology solutions" />
       </Helmet>
 
       {/* Hero Section */}
@@ -232,38 +212,7 @@ const About: React.FC = () => {
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Meet Our Team
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Our experienced team of professionals brings together diverse expertise and a shared passion for technology excellence.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {team.map((member, index) => (
-              <div key={index} className="text-center">
-                <div className="bg-gray-200 rounded-full w-32 h-32 mx-auto mb-4 flex items-center justify-center">
-                  <UserGroupIcon className="h-16 w-16 text-gray-400" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  {member.name}
-                </h3>
-                <p className="text-primary-600 font-medium mb-3">
-                  {member.role}
-                </p>
-                <p className="text-gray-600 text-sm">
-                  {member.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      
 
       {/* CTA Section */}
       <section className="py-20 bg-primary-600 text-white">
